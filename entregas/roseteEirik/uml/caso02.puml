@@ -1,0 +1,32 @@
+@startuml
+
+class Buffer {
+    - timeout: int
+    - buffer: String[][]
+    + init(): void
+    + updatePixel(x: int, y: int, colour: String): void
+    + display(): void
+}
+
+class Pixel {
+    - colour: Colour
+    + updateColour(colour: Colour): void
+}
+
+class Colour {
+    - colour: String
+    + show(): void
+}
+
+class CompoundColour {
+    - first: Colour
+    - second: Colour
+    + getColours(): void
+    + mixColours(first: Colour, second: Colour): void
+}
+
+Buffer <-- Pixel
+Pixel <--  CompoundColour
+CompoundColour <-- Colour
+
+@enduml

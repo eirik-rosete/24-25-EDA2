@@ -1,0 +1,44 @@
+@startuml
+
+class Buffer {
+    - frames: Frame[]
+    - timeout: int
+    - buffer: String[][]
+    + init(): void
+    + setFramePosition(x: int, y: int): void
+    + updatePixel(x: int, y: int, colour: String): void
+    + display(): void
+}
+
+class Frame {
+    - width: int
+    - length: int
+    - pixels: Pixel[]
+    + Frame(pixels: Pixel[], width: int, length: int): void
+    + changeColour(x: int, y: int, colour: String): void
+}
+
+class Pixel {
+    - colour: Colour
+    + updateColour(colour: Colour): void
+}
+
+class CompoundColour {
+    - first: Colour
+    - second: Colour
+    + getColours(): void
+    + mixColours(first: Colour, second: Colour): void
+}
+
+class Colour {
+    - colour: String
+    + show(): void
+}
+
+Buffer <--  CompoundColour
+Buffer <-- Frame
+Frame <-- Pixel
+CompoundColour <-- Colour
+Pixel <-- Colour
+
+@enduml

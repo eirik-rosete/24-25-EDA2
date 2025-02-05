@@ -1,0 +1,28 @@
+@startuml
+
+class Buffer {
+    - frames: Frame[]
+    - timeout: int
+    + init(): void
+    + setFramePosition(x: int, y: int): void
+    + updatePixel(x: int, y: int, colour: String): void
+    + display(): void
+}
+
+class Frame {
+    - width: int
+    - length: int
+    - pixels: Pixel[]
+    + Frame(pixels: Pixel[], width: int, length: int): void
+    + changeColour(x: int, y: int, colour: String): void
+}
+
+class Pixel {
+    - colour: String
+    + updateColour(colour: String): void
+}
+
+Buffer <-- Frame
+Frame <--  Pixel
+
+@enduml
